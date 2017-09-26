@@ -1,0 +1,13 @@
+
+linters:
+  SelectorFormat:
+    convention: hyphenated_lowercase
+    ignored_types: [attribute, class, element, id, placeholder, or pseudo-selector]
+  Indentation:
+    severity: warning
+    character: tab
+    width: 1
+  SpaceAfterPropertyColon:
+    style: aligned
+  ElsePlacement:
+    style: new_line
