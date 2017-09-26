@@ -1,0 +1,53 @@
+{
+    "preset": "jquery",
+    "fileExtensions": [ ".js" ],
+    "excludeFiles": [],
+    "maximumLineLength": 120,
+    "validateLineBreaks": "LF",
+    "validateIndentation": "\t",
+    "disallowMixedSpacesAndTabs": "smart",
+    "validateQuoteMarks": { "mark": "'", "escape": true },
+    "requireCurlyBraces": true,
+    "requireCapitalizedComments": null,
+	"requireMultipleVarDecl": true,
+    "requirePaddingNewLinesBeforeLineComments": null,
+
+	"requireSpaceAfterKeywords": [
+   		"do",
+   		"for",
+   		"if",
+   		"else",
+   		"switch",
+   		"case",
+   		"try",
+   	 	"catch",
+   	 	"void",
+   	 	"while",
+   	 	"with",
+   	 	"return"
+	],
+
+    "disallowSpaceAfterKeywords": [
+      "typeof"
+    ],
+
+	"disallowSpacesInAnonymousFunctionExpression": null,
+    "disallowSpacesInCallExpression": true,
+	"requireSpacesInAnonymousFunctionExpression": {
+        "beforeOpeningCurlyBrace": true
+    },
+
+    "requireSpacesInsideParentheses": false,
+
+    //"disallowSpacesInFunctionExpression": null,
+    "requireSpacesInFunctionExpression": {
+        "beforeOpeningCurlyBrace": true
+    },
+
+    "requireNewlineBeforeBlockStatements": true,
+
+    "disallowYodaConditions": true,
+
+    "disallowKeywordsOnNewLine": null,
+    "requireKeywordsOnNewLine": ["if", "else"]
+}
