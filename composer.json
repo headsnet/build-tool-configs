@@ -1,0 +1,13 @@
+{
+  "name": "headsnet/build-tool-configs",
+  "description": "Provide configuration for build and code quality analysis tools",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ben Roberts",
+      "email": "ben@headsnet.com"
+    }
+  ],
+  "minimum-stability": "stable"
+}
