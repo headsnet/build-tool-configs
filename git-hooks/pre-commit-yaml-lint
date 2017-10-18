@@ -1,3 +1,35 @@
-#!/bin/bash
+#!/usr/bin/php
+<?php
 
-bin/console yaml:lint
+$output = array();
+$return = 0;
+exec('git rev-parse --verify HEAD 2> /dev/null', $output, $return);
+$against = $return == 0 ? 'HEAD' : '4b825dc642cb6eb9a060e54bf8d69288fbee4904';
+
+exec("git diff-index --cached --name-only {$against}", $output);
+
+$config = 'vendor/headsnet/build-tool-configs/yaml-lint/config.yml';
+
+$filename_pattern = '/\.yml$/';
+$exit_status = 0;
+
+foreach ($output as $file)
+{
+	// Check file hasn't been moved or deleted
+	if (!file_exists($file)) continue;
+
+    // don't check files that aren't SCSS
+    if (!preg_match($filename_pattern, $file)) continue;
+
+    $lint_output = array();
+    exec("yamllint -c $config " . escapeshellarg($file), $lint_output, $return);
+    if ($return == 0)
+    {
+        continue;
+    }
+
+    echo 'yamllint error: ' . implode("\n", $lint_output), "\n";
+    $exit_status = 1;
+}
+
+exit($exit_status);
