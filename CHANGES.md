@@ -1,3 +1,6 @@
+### 18 October 2017 - Version 0.1.2:
+ - Added yamllint git hook
+
 ### 18 October 2017 - Version 0.1.1:
  - Added VERSION and CHANGES.md files, Version bump to v0.1.0
  - Added git hooks
