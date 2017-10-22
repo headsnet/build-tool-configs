@@ -17,4 +17,4 @@ rules:
     max-start: 1
     max-end: 1
   line-length:
-    max: 100
+    max: 120
