@@ -1,3 +1,6 @@
+### 22 October 2017 - Version 0.1.3:
+ - Permit longer lines in YAML format
+
 ### 18 October 2017 - Version 0.1.2:
  - Added yamllint git hook
 
