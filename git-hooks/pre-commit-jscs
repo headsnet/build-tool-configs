@@ -1,7 +1,7 @@
 #!/bin/bash
 # JS CodeSniffer pre-commit hook for git
 
-JSCS_BIN=/usr/local/bin/jscs
+JSCS_BIN=/usr/bin/jscs
 JSCS_IGNORE=
 TMP_STAGING=".tmp_staging"
 
