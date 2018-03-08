@@ -1,3 +1,8 @@
+### 08 March 2018 - Version 0.1.4:
+ - Added Makefile
+ - Standardise path to jscs binary
+ - Enforce commit message rules
+
 ### 22 October 2017 - Version 0.1.3:
  - Permit longer lines in YAML format
 
