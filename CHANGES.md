@@ -1,3 +1,6 @@
+### 03 April 2018 - Version 0.1.5:
+ - Increase commit message length to 72 chars
+
 ### 08 March 2018 - Version 0.1.4:
  - Added Makefile
  - Standardise path to jscs binary
