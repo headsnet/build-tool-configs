@@ -13,7 +13,7 @@ do
     length=${#line}
     # Subject line tests
     if [[ $lineno -eq 1 ]]; then
-        [[ $length -gt 70 ]] && error "Limit the subject line to 70 characters"
+        [[ $length -gt 72 ]] && error "Limit the subject line to 72 characters"
         [[ ! "$line" =~ ^[A-Z].*$ ]] && error "Capitalise the subject line"
         [[ "$line" == *. ]] && error "Do not end the subject line with a period"
     fi
