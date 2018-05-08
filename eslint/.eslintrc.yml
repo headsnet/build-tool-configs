@@ -1,0 +1,12 @@
+---
+
+env:
+  browser: true
+  es6: true
+  jquery: true
+
+ecmaFeatures:
+  modules: true
+
+parserOptions:
+  sourceType: module
