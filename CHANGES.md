@@ -1,3 +1,7 @@
+### 10 May 2018 - Version 0.1.6:
+ - Add pre-commit hook prohibiting commits directly to develop or master branches
+ - Add eslint config
+
 ### 03 April 2018 - Version 0.1.5:
  - Increase commit message length to 72 chars
 
