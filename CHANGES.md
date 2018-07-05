@@ -1,3 +1,6 @@
+### 05 July 2018 - Version 0.1.7:
+ - Remove redundant jshint commit hook
+
 ### 10 May 2018 - Version 0.1.6:
  - Add pre-commit hook prohibiting commits directly to develop or master branches
  - Add eslint config
