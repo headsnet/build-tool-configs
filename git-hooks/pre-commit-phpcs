@@ -1,15 +1,34 @@
 #!/bin/bash
-# PHP CodeSniffer pre-commit hook for git
-#
-# @author Soenke Ruempler <soenke@ruempler.eu>
-# @author Sebastian Kaspari <s.kaspari@googlemail.com>
-#
-# see the README
 
-PHPCS_BIN=/usr/bin/phpcs
-PHPCS_CODING_STANDARD=PEAR
+##################################################################################
+# Override any of these in the config file
+
+# Path to executable
+PHPCS_BIN=/usr/local/bin/phpcs
+
+# The coding standard, you can also specify a path to your own standard here
+# e. g. /path/to/my/standard/dir/
+PHPCS_CODING_STANDARD=PSR2
+
+# Default file glob pattern
+PHPCS_FILE_PATTERN="\.(php)$"
+
+# Ignore PHPCS warnings or not?
+PHPCS_IGNORE_WARNINGS=0
+
+# Encoding to use
+PHPCS_ENCODING=utf-8
+
+# Comma-separated list of sniffs from the standard that should be used
+# use `phpcs --standard=PSR1 -e` to list sniffs for your standard
+PHPCS_SNIFFS=
+
+# Comma-separated list of file patterns being ignored
 PHPCS_IGNORE=
-TMP_STAGING=".tmp_staging"
+
+##################################################################################
+
+TMP_STAGING="/tmp/git-hooks/.phpcs-staging"
 
 # parse config
 CONFIG_FILE=$(dirname $0)/config
@@ -32,9 +51,8 @@ else
     against=4b825dc642cb6eb9a060e54bf8d69288fbee4904
 fi
 
-# this is the magic: 
-# retrieve all files in staging area that are added, modified or renamed
-# but no deletions etc
+# this is the magic: retrieve all files in staging area that
+# are added, modified or renamed but no deletions etc
 FILES=$(git diff-index --name-only --cached --diff-filter=ACMR $against -- )
 
 if [ "$FILES" == "" ]; then
@@ -45,7 +63,7 @@ fi
 if [ -e $TMP_STAGING ]; then
     rm -rf $TMP_STAGING
 fi
-mkdir $TMP_STAGING
+mkdir -p $TMP_STAGING
 
 # match files against whitelist
 FILES_TO_CHECK=""
@@ -89,7 +107,7 @@ else
 fi
 
 # Copy contents of staged version of files to temporary staging area
-# because we only want the staged version that will be commited and not
+# because we only want the staged version that will be committed and not
 # the version in the working directory
 STAGED_FILES=""
 for FILE in $FILES_TO_CHECK

@@ -1,31 +1,66 @@
-#!/usr/bin/php
-<?php
+#!/bin/bash
 
-$output = array();
-$return = 0;
-exec('git rev-parse --verify HEAD 2> /dev/null', $output, $return);
-$against = $return == 0 ? 'HEAD' : '4b825dc642cb6eb9a060e54bf8d69288fbee4904';
+##################################################################################
+# Override any of these in the config file
 
-exec("git diff-index --cached --name-only {$against}", $output);
+# Path to executable
+PL_BIN=/usr/local/bin/phplint
 
-$filename_pattern = '/\.php$/';
-$exit_status = 0;
+# Default file glob pattern
+PL_FILE_PATTERN="\.(php)$"
 
-foreach ($output as $file) 
-{
-	// Check file hasn't been moved or deleted
-	if (!file_exists($file)) continue;
+##################################################################################
 
-    // don't check files that aren't PHP
-    if (!preg_match($filename_pattern, $file)) continue;
+# parse config
+CONFIG_FILE=$(dirname $0)/config
+if [ -e $CONFIG_FILE ]; then
+	. $CONFIG_FILE
+fi
 
-    $lint_output = array();
-    exec("php -l " . escapeshellarg($file), $lint_output, $return);
-    if ($return == 0) {
-        continue;
-    }
-    echo implode("\n", $lint_output), "\n";
-    $exit_status = 1;
-}
+# simple check if executable is set up correctly
+if [ ! -x $PL_BIN ]; then
+	echo "Csslint bin not found or executable -> $PL_BIN"
+	exit 1
+fi
 
-exit($exit_status);
+# stolen from template file
+if git rev-parse --verify HEAD
+then
+	against=HEAD
+else
+	# Initial commit: diff against an empty tree object
+	against=4b825dc642cb6eb9a060e54bf8d69288fbee4904
+fi
+
+# this is the magic: retrieve all files in staging area that
+# are added, modified or renamed but no deletions etc
+FILES=$(git diff-index --name-only --cached --diff-filter=ACMR $against -- )
+
+if [ "$FILES" == "" ]; then
+	exit 0
+fi
+
+# match files against whitelist
+FILES_TO_CHECK=""
+for FILE in $FILES
+do
+	echo "$FILE" | egrep -q "$PL_FILE_PATTERN"
+	RETVAL=$?
+	if [ "$RETVAL" -eq "0" ]
+	then
+		FILES_TO_CHECK="$FILES_TO_CHECK $FILE"
+	fi
+done
+
+if [ "$FILES_TO_CHECK" == "" ]; then
+	exit 0
+fi
+
+OUTPUT=$($PL_BIN $FILES_TO_CHECK)
+RETVAL=$?
+
+if [ $RETVAL -ne 0 ]; then
+	echo "$OUTPUT"
+fi
+
+exit $RETVAL
