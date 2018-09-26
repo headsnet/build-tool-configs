@@ -1,3 +1,6 @@
+### 26 September 2018 - Version 0.1.8:
+ - Refactored all git hooks
+
 ### 05 July 2018 - Version 0.1.7:
  - Remove redundant jshint commit hook
 
