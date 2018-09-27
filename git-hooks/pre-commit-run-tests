@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ -f .env ]
+then
+	source .env
+else
+	echo "Create a .env file for this project!"
+	exit 1
+fi
+
+if [ -z "$GH_TEST_COMMAND" ]
+then
+      echo "Set \$GH_TEST_COMMAND in .env file to enable pre-commit testing"
+else
+      $GH_TEST_COMMAND
+fi
+
+exit $?
