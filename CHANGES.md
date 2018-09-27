@@ -1,3 +1,6 @@
+### 27 September 2018 - Version 0.1.9:
+ - Add pre-commit hook to run test suite
+
 ### 26 September 2018 - Version 0.1.8:
  - Refactored all git hooks
 
