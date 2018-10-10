@@ -1,3 +1,7 @@
+### 10 October 2018 - Version 0.1.10:
+ - Run command with bash via the '-c' switch
+ - Allow 'tx' as a short variable name
+
 ### 27 September 2018 - Version 0.1.9:
  - Add pre-commit hook to run test suite
 
