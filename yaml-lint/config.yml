@@ -3,18 +3,20 @@
 extends: default
 
 rules:
-  braces:
-    min-spaces-inside: 1
-    max-spaces-inside: 1
-  comments-indentation: disable
-  colons:
-    max-spaces-before: 0
-    max-spaces-after: 99
-  document-start:
-    present: no
-  empty-lines:
-    max: 2
-    max-start: 1
-    max-end: 1
-  line-length:
-    max: 120
+    braces:
+        min-spaces-inside: 1
+        max-spaces-inside: 1
+    comments-indentation: disable
+    colons:
+        max-spaces-before: 0
+        max-spaces-after: 99
+    document-start:
+        present: no
+    empty-lines:
+        max: 2
+        max-start: 1
+        max-end: 1
+    indentation:
+        spaces: 4
+    line-length:
+        max: 120
