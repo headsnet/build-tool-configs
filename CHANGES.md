@@ -1,3 +1,7 @@
+### 27 October 2018 - Version 0.1.11:
+ - Change feature branch check to only prohibit commits to master
+ - Force YAML indent to be 4 spaces instead of "consistent"
+
 ### 10 October 2018 - Version 0.1.10:
  - Run command with bash via the '-c' switch
  - Allow 'tx' as a short variable name
