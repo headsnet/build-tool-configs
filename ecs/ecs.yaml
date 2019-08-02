@@ -1,0 +1,26 @@
+
+imports:
+    - { resource: '../../../../vendor/symplify/easy-coding-standard/config/psr12.yml' }
+    - { resource: '../../../../vendor/symplify/easy-coding-standard/config/clean-code.yml' }
+    - { resource: '../../../../vendor/symplify/easy-coding-standard/config/symfony.yml' }
+
+parameters:
+
+    exclude_files:
+        - 'tests/_support/_generated/*'
+
+    skip:
+        PhpCsFixer\Fixer\PhpTag\BlankLineAfterOpeningTagFixer:
+        PhpCsFixer\Fixer\ArrayNotation\TrailingCommaInMultilineArrayFixer:
+        PhpCsFixer\Fixer\Phpdoc\PhpdocSummaryFixer:
+
+services:
+
+    PhpCsFixer\Fixer\Basic\BracesFixer:
+        'allow_single_line_closure': false
+        'position_after_functions_and_oop_constructs': 'next'
+        'position_after_control_structures': 'next'
+        'position_after_anonymous_constructs': 'next'
+
+    PhpCsFixer\Fixer\Operator\ConcatSpaceFixer:
+        spacing: one

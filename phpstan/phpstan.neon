@@ -1,0 +1,10 @@
+
+includes:
+    - '../../../../vendor/phpstan/phpstan-webmozart-assert/extension.neon'
+    - '../../../../vendor/johnstoncode/phpstan-moneyphp/extension.neon'
+    - '../../../../vendor/phpstan/phpstan-symfony/extension.neon'
+    - '../../../../vendor/thecodingmachine/phpstan-strict-rules/phpstan-strict-rules.neon'
+
+parameters:
+    symfony:
+        container_xml_path: '%rootDir%/../../../var/cache/dev/srcApp_KernelDevDebugContainer.xml'
