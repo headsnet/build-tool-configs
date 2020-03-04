@@ -29,5 +29,8 @@ services:
     PhpCsFixer\Fixer\Operator\ConcatSpaceFixer:
         spacing: one
 
+    PhpCsFixer\Fixer\Whitespace\BlankLineBeforeStatementFixer:
+        statements: ['continue', 'declare', 'return', 'throw', 'try']
+
     Symplify\CodingStandard\Fixer\LineLength\LineLengthFixer:
         inline_short_lines: false
