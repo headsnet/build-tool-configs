@@ -15,6 +15,7 @@ parameters:
         PhpCsFixer\Fixer\ArrayNotation\TrailingCommaInMultilineArrayFixer:
         PhpCsFixer\Fixer\Phpdoc\PhpdocSummaryFixer:
         PhpCsFixer\Fixer\ReturnNotation\ReturnAssignmentFixer:
+        PhpCsFixer\Fixer\FunctionNotation\SingleLineThrowFixer:
 
 services:
 
